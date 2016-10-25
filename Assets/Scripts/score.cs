@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class score : MonoBehaviour
 {
@@ -27,13 +28,15 @@ public class score : MonoBehaviour
         }
         if (balls == 0)
         {
+            balls = 8;
+            Data.Score = int.Parse(scoreboard.text);
             if (int.Parse(scoreboard.text) >= 3000)
             {
-                Application.LoadLevel("win");
+                SceneManager.LoadScene("win");
             }
             else
             {
-                Application.LoadLevel("lose");
+                SceneManager.LoadScene("lose");
             }
         }
         Instantiate(launcher, new Vector3(0.011f, 0.393f, -10.721f), transform.rotation);
